@@ -1,16 +1,12 @@
-// Ionic Starter App
+// Stockify
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
@@ -22,52 +18,65 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
+// Set the Stockify's routes.
 .config(function($stateProvider, $urlRouterProvider) {
+
+  // Default route.
+  $urlRouterProvider.otherwise('/tab/overview');
+
+  // Set the application's routing.
   $stateProvider
 
-    .state('app', {
-    url: '/app',
+
+  // These are the main three screens.
+  .state('tab', {
+    url: '/tab',
     abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    templateUrl: 'templates/tab.html',
+  })
+  .state('setting', {
+    url: '/setting',
+    abstract: true,
+    templateUrl: 'templates/setting.html',
+  })
+  .state('about-us', {
+    url: '/about-us',
+    abstract: true,
+    templateUrl: 'templates/about-us.html',
   })
 
-  .state('app.search', {
-    url: '/search',
+
+  // These are the routes for the tabs screen.
+  .state('tab.overview', {
+    url: '/overview',
     views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
+      'tab-overview': {
+        templateUrl: 'templates/main-tabs/tab-overview.html',
       }
     }
   })
-
-  .state('app.browse', {
-      url: '/browse',
+  .state('tab.history', {
+      url: '/history',
       views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
+        'tab-history': {
+          templateUrl: 'templates/main-tabs/tab-history.html',
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+    .state('tab.favorite', {
+        url: '/favorite',
+        views: {
+          'tab-favorite': {
+            templateUrl: 'templates/main-tabs/tab-favorite.html',
+          }
         }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+      })
+      .state('tab.win-lose', {
+          url: '/win-lose',
+          views: {
+            'tab-win-lose': {
+              templateUrl: 'templates/main-tabs/tab-win-lose.html',
+            }
+          }
+        });
 });

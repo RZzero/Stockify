@@ -3,25 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>Stockify</title>
 
+    <!-- CSS styles -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ionic.app.css">
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -31,10 +18,40 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
   </head>
 
   <body ng-app="starter">
-    <ion-nav-view></ion-nav-view>
+
+    <!-- Adds Side menu. -->
+    <ion-side-menus enable-menu-with-back-views="false">
+
+      <!-- This is the content of the menu. -->
+      <ion-side-menu side="left">
+        <ion-header-bar class="bar bar-header bar-dark"></ion-header-bar>
+        <ion-content has-header="true">
+          <ion-list>
+            <ion-item href="#/tabs">Market</ion-item>
+            <ion-item href="#/settings">Setting</ion-item>
+            <ion-item href="#/about-us">About Us</ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-side-menu>
+
+      <!-- ... and this is the outer content. -->
+      <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+          <ion-nav-back-button>
+          </ion-nav-back-button>
+
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+          </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+      </ion-side-menu-content>
+    </ion-side-menus>
   </body>
 </html>
