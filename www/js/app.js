@@ -36,12 +36,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
   .state('setting', {
     url: '/setting',
-    abstract: true,
     templateUrl: 'templates/setting.html',
   })
   .state('about-us', {
     url: '/about-us',
-    abstract: true,
     templateUrl: 'templates/about-us.html',
   })
 
