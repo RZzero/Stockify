@@ -52,8 +52,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-overview': {
         templateUrl: 'templates/main-tabs/tab-overview.html',
+        controller: 'OverviewCtrl',
       }
-    }
+    },
   })
   .state('tab.history', {
       url: '/history',
