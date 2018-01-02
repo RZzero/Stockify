@@ -25,11 +25,16 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
-.controller('OverviewCtrl', function($scope,companies, $state) {
+.controller('OverviewCtrl', function($scope,companies,$ionicHistory, $state) {
 
   $scope.companies = companies;
   $scope.toggleFavorite = function(index) {
     $scope.companies[index].favorite = !$scope.companies[index].favorite;
+  };
+
+  var navOptions = {
+    disableBack: false,
+    disableAnimate: false
   };
 
   $scope.gotDetail = function() {
@@ -43,12 +48,17 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   $scope.currencies = currencies;
   $scope.languages = languages;
 })
+.controller('help',function($scope){
+  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+      viewData.enableBack = true;
+  });
+})
 
 .controller('SplashScreen',function($scope,currencies){
 
     $scope.currencies = currencies;
 
-  })
+})
 
 .controller('CharCtrl', function($scope, $element) {
   var ctx = $element[0];
