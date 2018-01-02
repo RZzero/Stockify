@@ -1,8 +1,12 @@
 /* Empty. Add your own CSS if you like */
 
-.about #about{
+.about #about {
     margin-left: 50%;
     margin-right: 10%;
     margin-bottom: 15%;
     background-color: red;
+}
+
+.asd{
+    font-family: 'Franklin Gothic Medium';
 }
