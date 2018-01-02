@@ -29,7 +29,10 @@ angular.module('starter.controllers', ['ui.router'])
 })
 
 .controller('Template2Ctrl', function($scope, $stateParams) {
+})
+
+.controller('SettingsCtrl',function($scope,currencies){
+
+  $scope.currencies = currencies;  
+
 });
-
-
-//$ionicHistory

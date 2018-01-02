@@ -37,10 +37,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('setting', {
     url: '/setting',
     templateUrl: 'templates/setting.html',
+    controller: 'SettingsCtrl',
   })
   .state('about-us', {
     url: '/about-us',
     templateUrl: 'templates/about-us.html',
+    
   })
 
 
