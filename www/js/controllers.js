@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ui.router'])
+angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 .controller('MenuCtrl', function($scope, $ionicHistory, $state) {
 
@@ -25,10 +25,15 @@ angular.module('starter.controllers', ['ui.router'])
 
 })
 
-.controller('OverviewCtrl', function($scope,companies) {
+.controller('OverviewCtrl', function($scope,$rootScope,companies) {
+
+  if ($rootScope.companies == null) {
+    $rootScope.companies = companies;
+  }
+
   $scope.companies = companies;
   $scope.toggleFavorite = function(index) {
-    $scope.companies[index].favorite = !$scope.companies[index].favorite;
+    $rootScope.companies[index].favorite = !$scope.companies[index].favorite;
   };
 
 })
