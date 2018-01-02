@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('about-us', {
     url: '/about-us',
     templateUrl: 'templates/about-us.html',
-    
+
   })
 
 
@@ -69,6 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         views: {
           'tab-favorite': {
             templateUrl: 'templates/main-tabs/tab-favorite.html',
+            controller: 'OverviewCtrl',
           }
         }
       })

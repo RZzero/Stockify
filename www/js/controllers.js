@@ -25,20 +25,13 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
-.controller('OverviewCtrl', function($scope,$rootScope,companies) {
-
-  if ($rootScope.companies == null) {
-    $rootScope.companies = companies;
-  }
+.controller('OverviewCtrl', function($scope,companies) {
 
   $scope.companies = companies;
   $scope.toggleFavorite = function(index) {
-    $rootScope.companies[index].favorite = !$scope.companies[index].favorite;
+    $scope.companies[index].favorite = !$scope.companies[index].favorite;
   };
 
-})
-
-.controller('Template2Ctrl', function($scope, $stateParams) {
 })
 
 .controller('SettingsCtrl',function($scope,currencies){
