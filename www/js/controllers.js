@@ -25,31 +25,8 @@ angular.module('starter.controllers', ['ui.router'])
 
 })
 
-.controller('OverviewCtrl', function($scope) {
-  $scope.companies = [
-    {
-      name: "Amazon",
-      gain: 25,
-      loss: 8,
-      date: "12/12/2017",
-      favorite: false,
-    },
-    {
-      name: "Google",
-      gain: 3,
-      loss: 10,
-      date: "12/12/2017",
-      favorite: false,
-    },
-    {
-      name: "Gmail",
-      gain: 15,
-      loss: 18,
-      date: "12/12/2017",
-      favorite: false,
-    },
-  ];
-
+.controller('OverviewCtrl', function($scope,companies) {
+  $scope.companies = companies;
   $scope.toggleFavorite = function(index) {
     $scope.companies[index].favorite = !$scope.companies[index].favorite;
   };

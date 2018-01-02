@@ -6,13 +6,13 @@
   <ion-content class="padding">
     <div class="list card" ng-repeat="company in companies">
       <div class="item">
-        <h2 style="display:inline-block;">{{ company.name }}</h2>
+        <h2 style="display:inline-block;">{{ company.companyName }}</h2>
         <p style="display:inline-block;">
           {{ '+' + company.gain + ' -' + company.loss + ' ' + company.date }}
         </p>
         <a style="float:right;" ng-click="toggleFavorite($index)">
           <i class="ion-ios-star" ng-if="company.favorite"></i>
-          <i class="ion-ios-star-outline" ng-if="company.favorite == false"></i>
+          <i class="ion-ios-star-outline" ng-if="!company.favorite"></i>
         </a>
       </div>
 
