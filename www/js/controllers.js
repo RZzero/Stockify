@@ -34,10 +34,10 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
-.controller('SettingsCtrl',function($scope,currencies){
+.controller('SettingsCtrl',function($scope,currencies,languages){
 
   $scope.currencies = currencies;
-
+  $scope.languages = languages;
 })
 
 .controller('SplashScreen',function($scope,currencies){

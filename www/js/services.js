@@ -17,6 +17,21 @@ angular.module('starter.services', [])
   ]
 })
 
+.factory('languages',function() {
+    return [
+      {
+         languageName: "English",
+
+      },
+      {
+        languageName: "Español",
+
+      },
+      {
+        languageName:"Deutsch",
+      },  
+    ]
+  })
 .factory('companies',function() {
   return [
     {
