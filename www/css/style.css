@@ -1,12 +1,60 @@
 /* Empty. Add your own CSS if you like */
 
-.about #about {
-    margin-left: 50%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//////////////////////////////////////////////////////////////
+                ABOUT US
+
+*/
+
+.about{
+    margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 15%;
-    background-color: red;
 }
 
-.asd{
+.logo{
+    width: 100%;
+    margin-top: 20%;
+}
+.logoimg{
+    display: block;
+    margin: auto;
+    /* display: inline-block; */
+}
+
+.insideItem{
+    margin-left: 6%;
     font-family: 'Franklin Gothic Medium';
+    text-align: center;
+    /* display: block; */
+}
+.itim{
+    /* float:left; */
+    vertical-align:middle;
+
+}
+.aboutF{
+    /* font-weight: bolder; */
+    font-size: 10px;
+    text-align: center;
 }
