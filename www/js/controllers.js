@@ -40,6 +40,12 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
+.controller('SplashScreen',function($scope,currencies){
+  
+    $scope.currencies = currencies;
+  
+  })
+
 .controller('CharCtrl', function($scope, $element) {
   var ctx = $element[0];
 
