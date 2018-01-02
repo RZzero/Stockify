@@ -61,6 +61,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-history': {
           templateUrl: 'templates/main-tabs/tab-history.html',
+          controller: 'OverviewCtrl',
         }
       }
     })
@@ -78,6 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           views: {
             'tab-win-lose': {
               templateUrl: 'templates/main-tabs/tab-win-lose.html',
+              controller: 'OverviewCtrl',
             }
           }
         });
