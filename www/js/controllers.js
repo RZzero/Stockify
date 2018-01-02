@@ -25,11 +25,15 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
-.controller('OverviewCtrl', function($scope,companies) {
+.controller('OverviewCtrl', function($scope,companies, $state) {
 
   $scope.companies = companies;
   $scope.toggleFavorite = function(index) {
     $scope.companies[index].favorite = !$scope.companies[index].favorite;
+  };
+
+  $scope.gotDetail = function() {
+    $state.go('detail');
   };
 
 })
@@ -41,9 +45,9 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 })
 
 .controller('SplashScreen',function($scope,currencies){
-  
+
     $scope.currencies = currencies;
-  
+
   })
 
 .controller('CharCtrl', function($scope, $element) {

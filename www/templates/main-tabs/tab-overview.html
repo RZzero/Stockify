@@ -5,6 +5,7 @@
 <ion-view view-title="Market">
   <ion-content class="padding">
     <div class="list card" ng-repeat="company in companies">
+      <div ng-click="gotDetail()">
       <div class="item">
         <h2 style="display:inline-block;">{{ company.companyName }}</h2>
         <p style="display:inline-block;">
@@ -18,6 +19,7 @@
 
       <div class="item item-image">
         <canvas ng-controller="CharCtrl" style="width:100%;height:30vh"></canvas>
+      </div>
       </div>
     </div>
   </ion-content>

@@ -42,10 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('about-us', {
     url: '/about-us',
     templateUrl: 'templates/about-us.html',
-
   })
-
-
   // These are the routes for the tabs screen.
   .state('tab.overview', {
     url: '/overview',
@@ -55,6 +52,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'OverviewCtrl',
       }
     },
+  })
+  .state('detail', {
+    url: '/detail',
+    templateUrl: 'templates/detail.html',
   })
   .state('tab.history', {
       url: '/history',
