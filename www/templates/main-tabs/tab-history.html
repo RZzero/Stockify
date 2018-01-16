@@ -4,11 +4,15 @@
 
 <ion-view view-title="Market">
   <ion-content class="padding">
+      <ion-item>
+          <ion-label>Date</ion-label>
+          <input type="date" name="" id="">
+      </ion-item>
     <div class="list card" ng-repeat="company in companies">
       <div class="item">
         <h2 style="display:inline-block;">{{ company.companyName }}</h2>
         <p style="display:inline-block;">
-          {{ '+' + company.gain + ' -' + company.loss + ' ' + company.date }}
+            {{ company.gain +'    ' + company.date }}
         </p>
         <a style="float:right;" ng-click="toggleFavorite($index)">
           <i class="ion-ios-star" ng-if="company.favorite"></i>

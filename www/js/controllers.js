@@ -39,6 +39,7 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
   // $scope.gotDetail = function() {
   //   $state.go('detail');
+
   // };
 
 })
@@ -48,8 +49,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   let APIKey = "6318";
   var queryStringForCompany = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="+ $scope.company.companyCode +"&outputsize=compact&apikey="+APIKey;
   
-  //Qué es esto globito????
-  //Qué es esto globito????
   var ctx = $element[0];
 
   $http.get(queryStringForCompany)       
@@ -57,10 +56,10 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
       //Acá obtengo la información Time Series Daily de los ultimos 7 días la compañía
       let companyTimeSeries = data['Time Series (Daily)'];
-      var limit = 0;
 
       var values = [];
       var dates = [];
+      var limit = 0;
       for (var key in companyTimeSeries) {
           var stock = new Object();
           values.push(Number(companyTimeSeries[key.toString()]['4. close']));
@@ -86,7 +85,7 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
         data: {
         labels: dates.reverse(),
         datasets: [{
-            label: 'Actions',
+            label: 'Stocks',
             data: values.reverse(),
             backgroundColor: 'rgba(153, 102, 255, 0.2)',
             borderColor: 'rgba(255, 206, 86, 1)',
@@ -101,7 +100,7 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
                 ticks:  {
                   //Esto es para buscar el mejor espaciado entre los puntos del eje Y
                   //Lo correcto es sacar la desviacion estandar pero por ahora estoy usando los ultimos dos puntos
-                  fixedStepSize: Math.pow(Math.pow(values[2]-values[0],2),0.5)
+                  // fixedStepSize: 0.9
               }
             }]
         }
@@ -112,10 +111,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
     .error(function(data) {
         alert("There was a problem retrieving data, please check your internet connection");
   });
-
-
-  //Qué es esto globito????
-  //Qué es esto globito????
 
   if (ctx == null) {
     return;
@@ -137,7 +132,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 .controller('SplashScreen',function($scope,currencies){
 
     $scope.currencies = currencies;
-
 });
 
 
