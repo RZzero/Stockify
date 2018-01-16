@@ -14,6 +14,10 @@ angular.module('starter.services', [])
        currencyCode: "EUR",
        currencyName: "Euro",
     },  
+    {
+        currencyCode: "BTC",
+        currencyName: "Bitcoin",
+     },  
   ]
 })
 
@@ -21,17 +25,13 @@ angular.module('starter.services', [])
     return [
       {
          languageName: "English",
-
       },
       {
         languageName: "Español",
-
-      },
-      {
-        languageName:"Deutsch",
-      },  
+      }, 
     ]
   })
+
 .factory('companies',function() {
   return [
     {
@@ -40,6 +40,8 @@ angular.module('starter.services', [])
        comercialName: "Microsoft",
        imgUrl: "",
        favorite:false,
+       stocks:0,
+       firstTimeBuying:false,
     },
     {
         companyCode: "AAPL",
@@ -47,6 +49,8 @@ angular.module('starter.services', [])
         comercialName: "Apple",
         imgUrl: "",
         favorite:false,
+        stocks:0,
+        firstTimeBuying:false,
     },
     {
         companyCode: "AMZN",
@@ -54,12 +58,15 @@ angular.module('starter.services', [])
         comercialName: "Amazon",
         imgUrl: "",
         favorite:false,
+        firstTimeBuying:false,
     },    
     {
         companyCode: "NTDOY",
         companyName: "Nintendo Co. Ltd. ADR",
         comercialName: "Nintendo",
         imgUrl: "",
+        stocks:0,
+        firstTimeBuying:false,
      },
      {
          companyCode: "SSNLF",
@@ -67,12 +74,16 @@ angular.module('starter.services', [])
          comercialName: "Samsung",
          imgUrl: "",
          favorite:false,
+         stocks:0,
+         firstTimeBuying:false,
      },
      {
          companyCode: "TSLA",
          companyName: "Tesla Inc.",
          comercialName: "Tesla",
          imgUrl: "",
+         stocks:0,
+         firstTimeBuying:false,
      },    
      {
         companyCode: "SNAP",
@@ -80,6 +91,8 @@ angular.module('starter.services', [])
         comercialName: "Snapchat",
         imgUrl: "",
         favorite:false,
+        stocks:0,
+        firstTimeBuying:false,
      },
      {
          companyCode: "GOOGL",
@@ -87,6 +100,8 @@ angular.module('starter.services', [])
          comercialName: "Google (Alphabet)",
          imgUrl: "",
          favorite:false,
+         stocks:0,
+         firstTimeBuying:false,
      },
      {
          companyCode: "NVDA",
@@ -94,6 +109,8 @@ angular.module('starter.services', [])
          comercialName: "NVIDIA",
          imgUrl: "",
          favorite:false,
+         stocks:0,
+         firstTimeBuying:false,
      },    
      {
         companyCode: "INTC",
@@ -101,6 +118,8 @@ angular.module('starter.services', [])
         comercialName: "INTEL",
         imgUrl: "",
         favorite:false,
+        stocks:0,
+        firstTimeBuying:false,
      },
      {
          companyCode: "AMD",
@@ -108,6 +127,8 @@ angular.module('starter.services', [])
          comercialName: "AMD",
          imgUrl: "",
          favorite:false,
+         stocks:0,
+         firstTimeBuying:false,
      },
      {
          companyCode: "GPRO",
@@ -115,6 +136,8 @@ angular.module('starter.services', [])
          comercialName: "GoPro",
          imgUrl: "",
          favorite:false,
+         stocks:0,
+         firstTimeBuying:false,
      },
      {
         companyCode: "GRMN",
@@ -122,6 +145,8 @@ angular.module('starter.services', [])
         comercialName: "Garmin",
         imgUrl: "",
         favorite:false,
+        stocks:0,
+        firstTimeBuying:false,
      },
   ]
 });

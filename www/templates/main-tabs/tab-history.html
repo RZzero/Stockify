@@ -21,7 +21,7 @@
       <div class="item">
         <h2 style="display:inline-block;">{{ company.companyName }}</h2>
         <p style="display:inline-block;">
-          {{ '+' + company.gain + ' -' + company.loss + ' ' + company.date }}
+            {{ company.gain +'    ' + company.date }}
         </p>
         <a style="float:right;" ng-click="toggleFavorite($index)">
           <i class="ion-ios-star" ng-if="company.favorite"></i>
