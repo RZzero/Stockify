@@ -10,6 +10,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -62,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-history': {
           templateUrl: 'templates/main-tabs/tab-history.html',
-          controller: 'OverviewCtrl',
+          controller: 'HistoryCtrl',
         }
       }
     })

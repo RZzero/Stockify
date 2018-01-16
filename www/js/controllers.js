@@ -44,15 +44,15 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 })
 
 .controller('CharCtrl', function($scope, $element,$http) {
-  
+
   let APIKey = "6318";
   var queryStringForCompany = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="+ $scope.company.companyCode +"&outputsize=compact&apikey="+APIKey;
-  
+
   //Qué es esto globito????
   //Qué es esto globito????
   var ctx = $element[0];
 
-  $http.get(queryStringForCompany)       
+  $http.get(queryStringForCompany)
     .success(function(data) {
 
       //Acá obtengo la información Time Series Daily de los ultimos 7 días la compañía
@@ -62,7 +62,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
       var values = [];
       var dates = [];
       for (var key in companyTimeSeries) {
-          var stock = new Object();
           values.push(Number(companyTimeSeries[key.toString()]['4. close']));
           dates.push(key.toString());
 
@@ -94,7 +93,7 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
             fill: false,
         }]
         },
-      
+
         options: {
         scales: {
             yAxes: [{
@@ -134,10 +133,59 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   });
 })
 
+.controller('HistoryCtrl',function($scope) {
+
+   $scope.dataRange = {
+     start: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
+     end: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
+   }
+
+   var options = {
+     date: new Date(),
+     mode: 'date'
+   };
+
+   $scope.changeStart = function($event) {
+     if (typeof datePicker !== 'undefined') {
+       datePicker.show(options, function(date) {
+         if (date != 'Invalid Date') {
+           $scope.dataRange.start = moment(date).format('DD/MM/YYYY');
+         }
+       });
+     } else {
+       alert('NOT SUPPORTED IN BROWSER');
+     }
+   }
+
+   $scope.changeEnd = function($event) {
+     if (typeof datePicker !== 'undefined') {
+       datePicker.show(options, function(date) {
+         if (date != 'Invalid Date') {
+           $scope.dataRange.end = moment(date).format('DD/MM/YYYY');
+         }
+       });
+     } else {
+       alert('NOT SUPPORTED IN BROWSER');
+     }
+   }
+
+   $scope.search = function($event) {
+     var newStart = moment($scope.dataRange.start, 'DD/MM/YYYY');
+     var newEnd = moment($scope.dataRange.end, 'DD/MM/YYYY');
+
+     if (newEnd.isBefore(newStart)) {
+       alert('End date cannot be higher than the start date');
+       return;
+     }
+
+     // TODO: RAFA METE MANO.
+
+   };
+
+})
+
 .controller('SplashScreen',function($scope,currencies){
 
     $scope.currencies = currencies;
 
 });
-
-
