@@ -14,24 +14,23 @@ angular.module('starter.services', [])
        currencyCode: "EUR",
        currencyName: "Euro",
     },  
-    {
-        currencyCode: "BTC",
-        currencyName: "Bitcoin",
-     },  
   ]
 })
-
 .factory('languages',function() {
     return [
       {
          languageName: "English",
+
       },
       {
         languageName: "Español",
-      }, 
+
+      },
+      {
+        languageName:"Deutsch",
+      },  
     ]
   })
-
 .factory('companies',function() {
   return [
     {
@@ -40,8 +39,6 @@ angular.module('starter.services', [])
        comercialName: "Microsoft",
        imgUrl: "",
        favorite:false,
-       stocks:0,
-       firstTimeBuying:false,
     },
     {
         companyCode: "AAPL",
@@ -49,8 +46,6 @@ angular.module('starter.services', [])
         comercialName: "Apple",
         imgUrl: "",
         favorite:false,
-        stocks:0,
-        firstTimeBuying:false,
     },
     {
         companyCode: "AMZN",
@@ -58,15 +53,12 @@ angular.module('starter.services', [])
         comercialName: "Amazon",
         imgUrl: "",
         favorite:false,
-        firstTimeBuying:false,
     },    
     {
         companyCode: "NTDOY",
         companyName: "Nintendo Co. Ltd. ADR",
         comercialName: "Nintendo",
         imgUrl: "",
-        stocks:0,
-        firstTimeBuying:false,
      },
      {
          companyCode: "SSNLF",
@@ -74,16 +66,12 @@ angular.module('starter.services', [])
          comercialName: "Samsung",
          imgUrl: "",
          favorite:false,
-         stocks:0,
-         firstTimeBuying:false,
      },
      {
          companyCode: "TSLA",
          companyName: "Tesla Inc.",
          comercialName: "Tesla",
          imgUrl: "",
-         stocks:0,
-         firstTimeBuying:false,
      },    
      {
         companyCode: "SNAP",
@@ -91,8 +79,6 @@ angular.module('starter.services', [])
         comercialName: "Snapchat",
         imgUrl: "",
         favorite:false,
-        stocks:0,
-        firstTimeBuying:false,
      },
      {
          companyCode: "GOOGL",
@@ -100,8 +86,6 @@ angular.module('starter.services', [])
          comercialName: "Google (Alphabet)",
          imgUrl: "",
          favorite:false,
-         stocks:0,
-         firstTimeBuying:false,
      },
      {
          companyCode: "NVDA",
@@ -109,8 +93,6 @@ angular.module('starter.services', [])
          comercialName: "NVIDIA",
          imgUrl: "",
          favorite:false,
-         stocks:0,
-         firstTimeBuying:false,
      },    
      {
         companyCode: "INTC",
@@ -118,8 +100,6 @@ angular.module('starter.services', [])
         comercialName: "INTEL",
         imgUrl: "",
         favorite:false,
-        stocks:0,
-        firstTimeBuying:false,
      },
      {
          companyCode: "AMD",
@@ -127,8 +107,6 @@ angular.module('starter.services', [])
          comercialName: "AMD",
          imgUrl: "",
          favorite:false,
-         stocks:0,
-         firstTimeBuying:false,
      },
      {
          companyCode: "GPRO",
@@ -136,8 +114,6 @@ angular.module('starter.services', [])
          comercialName: "GoPro",
          imgUrl: "",
          favorite:false,
-         stocks:0,
-         firstTimeBuying:false,
      },
      {
         companyCode: "GRMN",
@@ -145,8 +121,36 @@ angular.module('starter.services', [])
         comercialName: "Garmin",
         imgUrl: "",
         favorite:false,
-        stocks:0,
-        firstTimeBuying:false,
      },
   ]
-});
+})
+.factory('Stocks', function() {
+    // Might use a resource here that returns a JSON array
+    // Some fake testing data
+    var Cities = [
+    ];
+    return {
+      all: function() {
+        return Cities;
+      },
+      remove: function(city) {
+        Cities.splice(Cities.indexOf(city), 1);
+      },
+      get: function(cityId) {
+        for (var i = 0; i < Cities.length; i++) {
+          if (Cities[i].id === parseInt(cityId)) {
+            return Cities[i];
+          }
+        }
+        return null;
+      },
+      getIdOfCity: function(cityName) {
+        for (var i = 0; i < Cities.length; i++) {
+          if (Cities[i].name === cityName) {
+            return Cities[i].id;
+          }
+        }
+        return null;
+      }
+    };
+  });
