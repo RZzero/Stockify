@@ -70,7 +70,17 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
           limit++;
           if(limit == 7)break;
       }
-      
+
+      //Styling the header
+      $scope.company.date = dates[0];
+
+      if(values[0]-values[1] >= 0){
+        $scope.company.gain ="+" + (values[0]-values[1]).toString().substring(0,4);
+      }else{
+        $scope.company.gain =(values[0]-values[1]).toString().substring(0, 4);
+      }
+
+      //Getting data for filling the chart
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -89,6 +99,9 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
         scales: {
             yAxes: [{
                 ticks:  {
+                  //Esto es para buscar el mejor espaciado entre los puntos del eje Y
+                  //Lo correcto es sacar la desviacion estandar pero por ahora estoy usando los ultimos dos puntos
+                  fixedStepSize: Math.pow(Math.pow(values[2]-values[0],2),0.5)
               }
             }]
         }
