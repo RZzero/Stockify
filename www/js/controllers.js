@@ -37,10 +37,76 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
     disableAnimate: false
   };
 
-  $scope.gotDetail = function() {
-    $state.go('detail');
-  };
+  // $scope.gotDetail = function() {
+  //   $state.go('detail');
+  // };
 
+})
+
+.controller('CharCtrl', function($scope, $element,$http) {
+  
+  let APIKey = "6318";
+  var queryStringForCompany = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="+ $scope.company.companyCode +"&outputsize=compact&apikey="+APIKey;
+  
+  //Qué es esto globito????
+  //Qué es esto globito????
+  var ctx = $element[0];
+
+  $http.get(queryStringForCompany)       
+    .success(function(data) {
+
+      //Acá obtengo la información Time Series Daily de los ultimos 7 días la compañía
+      let companyTimeSeries = data['Time Series (Daily)'];
+      var limit = 0;
+
+      var values = [];
+      var dates = [];
+      for (var key in companyTimeSeries) {
+          var stock = new Object();
+          values.push(Number(companyTimeSeries[key.toString()]['4. close']));
+          dates.push(key.toString());
+
+
+          limit++;
+          if(limit == 7)break;
+      }
+      
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+        labels: dates.reverse(),
+        datasets: [{
+            label: 'Actions',
+            data: values.reverse(),
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1,
+            fill: false,
+        }]
+        },
+      
+        options: {
+        scales: {
+            yAxes: [{
+                ticks:  {
+              }
+            }]
+        }
+        }
+        });
+    })
+
+    .error(function(data) {
+        alert("There was a problem retrieving data, please check your internet connection");
+  });
+
+
+  //Qué es esto globito????
+  //Qué es esto globito????
+
+  if (ctx == null) {
+    return;
+  }
 })
 
 .controller('SettingsCtrl',function($scope,currencies,languages){
@@ -48,6 +114,7 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   $scope.currencies = currencies;
   $scope.languages = languages;
 })
+
 .controller('help',function($scope){
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
       viewData.enableBack = true;
@@ -58,36 +125,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
     $scope.currencies = currencies;
 
-})
-
-.controller('CharCtrl', function($scope, $element) {
-  var ctx = $element[0];
-
-  if (ctx == null) {
-    return;
-  }
-
-  var myChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-  labels: ["01/01", "02/01", "03/01", "04/01", "05/01"],
-  datasets: [{
-      label: 'Actions',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: 'rgba(153, 102, 255, 0.2)',
-      borderColor: 'rgba(255, 206, 86, 1)',
-      borderWidth: 1,
-      fill: false,
-  }]
-  },
-  options: {
-  scales: {
-      yAxes: [{
-          ticks: {
-              beginAtZero:true
-          }
-      }]
-  }
-  }
-  });
 });
+
+
