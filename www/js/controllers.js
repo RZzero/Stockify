@@ -135,54 +135,71 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   $scope.currencies = currencies;
   $scope.languages = languages;
 })
-.controller('HistoryCtrl',function($scope) {
+.controller('HistoryCtrl',function($scope, companies) {
 
-   $scope.dataRange = {
-     start: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
-     end: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
-   }
+  $scope.companies = companies;
+  $scope.toggleFavorite = function(index) {
+    $scope.companies[index].favorite = !$scope.companies[index].favorite;
+  };
 
-   var options = {
-     date: new Date(),
-     mode: 'date'
-   };
+  var navOptions = {
+    disableBack: false,
+    disableAnimate: false
+  };
 
-   $scope.changeStart = function($event) {
-     if (typeof datePicker !== 'undefined') {
-       datePicker.show(options, function(date) {
-         if (date != 'Invalid Date') {
-           $scope.dataRange.start = moment(date).format('DD/MM/YYYY');
-         }
-       });
-     } else {
-       alert('NOT SUPPORTED IN BROWSER');
-     }
-   }
+  $scope.gotDetail = function(company) {
+    window.company = company;
+    $state.go('detail');
+  };
 
-   $scope.changeEnd = function($event) {
-     if (typeof datePicker !== 'undefined') {
-       datePicker.show(options, function(date) {
-         if (date != 'Invalid Date') {
-           $scope.dataRange.end = moment(date).format('DD/MM/YYYY');
-         }
-       });
-     } else {
-       alert('NOT SUPPORTED IN BROWSER');
-     }
-   }
 
-   $scope.search = function($event) {
-     var newStart = moment($scope.dataRange.start, 'DD/MM/YYYY');
-     var newEnd = moment($scope.dataRange.end, 'DD/MM/YYYY');
+  $scope.dataRange = {
+    start: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
+    end: moment('01/01/2018','DD/MM/YYYY').format('DD/MM/YYYY'),
+  }
 
-     if (newEnd.isBefore(newStart)) {
-       alert('End date cannot be higher than the start date');
-       return;
-     }
+  var options = {
+    date: new Date(),
+    mode: 'date'
+  };
 
-     // TODO: RAFA METE MANO.
+  $scope.changeStart = function($event) {
+    if (typeof datePicker !== 'undefined') {
+      datePicker.show(options, function(date) {
+        if (date != 'Invalid Date') {
+          $scope.dataRange.start = moment(date).format('DD/MM/YYYY');
+        }
+      });
+    } else {
+      alert('NOT SUPPORTED IN BROWSER');
+    }
+  }
 
-   };
+  $scope.changeEnd = function($event) {
+    if (typeof datePicker !== 'undefined') {
+      datePicker.show(options, function(date) {
+        if (date != 'Invalid Date') {
+          $scope.dataRange.end = moment(date).format('DD/MM/YYYY');
+        }
+      });
+    } else {
+      alert('NOT SUPPORTED IN BROWSER');
+    }
+  }
+
+  $scope.search = function($event) {
+    var newStart = moment($scope.dataRange.start, 'DD/MM/YYYY');
+    var newEnd = moment($scope.dataRange.end, 'DD/MM/YYYY');
+
+    if (newEnd.isBefore(newStart)) {
+      alert('End date cannot be higher than the start date');
+      return;
+    }
+    // TODO: RAFA METE MANO.
+
+
+  
+};
 
 })
 
