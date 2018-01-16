@@ -5,10 +5,9 @@
 <ion-view view-title="Market">
   <ion-content class="padding">
     <div class="list card" ng-repeat="company in companies">
-      <div ng-click="gotDetail()">
       <div class="item">
-        <h2 style="display:inline-block;">{{ company.companyName }}</h2>
-        <p style="display:inline-block;">
+        <h2 style="display:inline-block;" ng-click="gotDetail(company)">{{ company.companyName }}</h2>
+        <p style="display:inline-block;" ng-click="gotDetail(company)">
           {{ company.gain +'    ' + company.date }}
         </p>
         <a style="float:right;" ng-click="toggleFavorite($index)">
@@ -17,10 +16,9 @@
         </a>
       </div>
 
-      <div class="item item-image">
+      <div class="item item-image" ng-click="gotDetail(company)">
         <canvas ng-controller="CharCtrl" style="width:100%;height:30vh"></canvas>
       </div>
-    </div>
     </div>
   </ion-content>
 </ion-view>

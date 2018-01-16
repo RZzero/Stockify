@@ -1,13 +1,13 @@
 <ion-view view-title="Amazon">
-  <ion-nav-bar class="bar-stable">
-    <ion-nav-back-button>
+  <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+    <ion-nav-back-button ng-click="goBack()" class="button-icon ion-arrow-left-c">
     </ion-nav-back-button>
   </ion-nav-bar>
-  <ion-content>
-  <ion-pane class="padding">
-    <h3>Performance</h3>
-    <canvas ng-controller="CharCtrl" style="width:100%;height:30vh"></canvas>
-    <p style="float: left;">+25 - 8 02/01/2018</p>
-  </ion-pane>
+  <ion-content overflow-scroll="true">
+    <ion-pane class="padding">
+      <h3>Performance</h3>
+      <canvas ng-controller="CharCtrl" style="width:100%;height:30vh"></canvas>
+      <p style="float: left;">+25 - 8 02/01/2018</p>
+    </ion-pane>
   </ion-content>
 </ion-view>

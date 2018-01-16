@@ -56,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('detail', {
     url: '/detail',
     templateUrl: 'templates/detail.html',
-    controller: 'help',
+    controller: 'DetailCtrl',
   })
   .state('tab.history', {
       url: '/history',

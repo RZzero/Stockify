@@ -22,7 +22,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
     $ionicHistory.nextViewOptions(navOptions);
     $state.go('about-us');
   }
-
 })
 
 .controller('OverviewCtrl', function($scope,companies,$ionicHistory, $state) {
@@ -37,10 +36,23 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
     disableAnimate: false
   };
 
-  // $scope.gotDetail = function() {
-  //   $state.go('detail');
+  $scope.gotDetail = function(company) {
+    window.company = company;
+    $state.go('detail');
+  };
 
-  // };
+})
+
+.controller('DetailCtrl',function($scope,$state, currencies,languages){
+  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+      viewData.enableBack = true;
+  });
+
+  $scope.company = window.company ? window.company : { };
+
+  $scope.goBack = function() {
+    $state.go('tab.overview');
+  }
 
 })
 
@@ -121,13 +133,6 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
   $scope.currencies = currencies;
   $scope.languages = languages;
 })
-
-.controller('help',function($scope){
-  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-      viewData.enableBack = true;
-  });
-})
-
 .controller('HistoryCtrl',function($scope) {
 
    $scope.dataRange = {
