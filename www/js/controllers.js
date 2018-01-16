@@ -63,6 +63,8 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
   var ctx = $element[0];
 
+  var options = { dimBackground: true };
+
   $http.get(queryStringForCompany)
     .success(function(data) {
 
@@ -184,7 +186,12 @@ angular.module('starter.controllers', ['ui.router', 'starter.services'])
 
 })
 
-.controller('SplashScreen',function($scope,currencies){
-
+.controller('SplashScreen',function($scope,currencies) {
     $scope.currencies = currencies;
+})
+
+.controller('AboutUsCtrl', function($scope) {
+  $scope.goAlphaVantage = function() {
+    cordova.InAppBrowser.open('https://www.alphavantage.co/', '_blank', "location=yes");
+  };
 });

@@ -86,4 +86,7 @@
     <engine name="ios" spec="~4.5.4" />
     <allow-navigation href="http://10.111.12.0:8101" />
     <allow-navigation href="http://192.168.10.1:8101" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^2.0.1" />
+    <plugin name="cordova-plugin-progressindicator" spec="https://github.com/pbernasconi/cordova-progressIndicator.git" />
+    <plugin name="cordova-plugin-spinner" spec="^1.1.0" />
 </widget>
